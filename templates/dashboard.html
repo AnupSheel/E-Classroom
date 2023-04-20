@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>welcome to E-class Dashboard</title>
+</head>
+<body>
+    <h1>Coodinator Dashboard</h1>
+    <p>
+        <a href="/addproduct">Add Batch</a>
+    </p>
+    <table border="1" align="ccenter">
+        <tr>
+        <th>Sr.No</th>
+        <th>Batch Name</th>
+        <th>Course Category</th>
+        <th>Extra Course Category</th>
+        <th>Recruitment</th>
+        <th>Price</th>
+        <th>Batch Time</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        </tr>
+        {% for x in data %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.name}}</td>
+            {% if x.cat1 == '1' %}
+            <td>Python,Django,MySQL,HTML,CSS,Javascripts</td>
+            {% elif x.cat1 == '2' %}
+            <td>Java,React,Angular,MySQL,HTML,CSS,Javascripts</td>
+            {% elif x.cat1 == '3' %}
+            <td>C,C++,Java,Python</td>
+            {% elif x.cat1 == '4' %}
+            <td>Salesforce</td>
+            {% elif x.cat1 == '5' %}
+            <td>Oracle fusion</td>
+            {% else %}
+            <td>None</td>
+            {% endif %}
+
+            {% if x.cat2 == '1' %}
+            <td>Microsoft office,Resume Building Session,Career Guidance Session,Profile Building Session,Interview Session,Linux Session,Github Session.</td>
+            {% else %}
+            <td>None</td>
+            {% endif %}
+
+            {% if x.job_type == '1' %}
+            <td>Non-IT Functional</td>
+            {% else %}
+            <td>IT Technical</td>
+            {% endif %}
+
+            <td>{{x.price}}</td>
+            {% if x.time == '1' %}
+            <td>9 AM TO 11 AM</td>
+            {% elif x.time == '2' %}
+            <td>3 PM TO 5 PM</td>
+            {% else %}
+            <td>7 PM TO 9 PM</td>
+            {% endif %}
+            {% if x.status == '1' %}
+            <td>Available</td>
+            {% else %}
+            <td>Unavailable</td>
+            {% endif %}
+
+            <td><a href="/edit/{{x.id}}">Edit</a></td>
+            <td><a href="/delete/{{x.id}}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <table border="1">
+    <th colspan="2">Filter by status</th>
+    <tr>
+        <th>Sr.no</th>
+        <th>Filter Name</th>
+    </tr>
+    <tr>
+    <td>1</td>
+    <td><a href="/dash">All</a></td>
+    </tr>
+    <tr>
+    <td>2</td>
+    <td><a href="/statfilter/1">Available</a></td>
+    </tr>
+    <tr>
+    <td>3</td>
+    <td><a href="/statfilter/0">Unavailable</a></td>
+    </tr>
+    </table>
+    <br>
+    <table border="1">
+        <th colspan="2">Filter by Cat1</th>
+        <tr>
+            <th>Sr.No</th>
+            <th>Filter Name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><a href="/dash">All</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><a href="/cat1filter/1">Python,Django,MySQL,HTML,CSS,Javascripts</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><a href="/cat1filter/2">Java,React,Angular,MySQL,HTML,CSS,Javascripts</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><a href="/cat1filter/3">C,C++,Java,Python</a></td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td><a href="/cat1filter/4">Salesforce</a></td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td><a href="/cat1filter/5">Oracle fusion</a></td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td><a href="cat1filter/6">None</a></td>
+        </tr>
+        
+    </table>
+    <br>
+    <table border="1">
+        <th colspan="2">Filter by Cat2</th>
+        <tr>
+            <th>Sr.no</th>
+            <th>Fliter Name</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><a href="/dash">All</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><a href="/cat2filter/1">Microsoft office,Resume Building Session,Career Guidance Session,Profile Building Session,Interview Session,Linux Session,Github Session.</a>
+            </td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><a href="/cat2filter/2">None</a></td>
+        </tr>
+
+    </table>
+    <br>
+    <table border="1">
+        <th colspan="2">Filter by Batch Timings</th>
+        <tr>
+            <th>Sr.no</th>
+            <th>Batch Time</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><a href="/dash">All</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><a href="/timefilter/1">9 AM TO 11 AM</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td><a href="/timefilter/2">3 PM TO 5 PM</a></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td><a href="/timefilter/3">7 PM TO 9 PM</a></td>
+        </tr>
+    </table>
+    <br>
+    <table border="1">
+        <th colspan="2">Filter by Price</th>
+        <tr>
+            <th>Sr.No</th>
+            <th>Price Rabge</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><a href="/pricefilter/1"> > 30000 </a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><a href="/pricefilter/2"> < 30000</a></td>
+        </tr>
+
+    </table>
+    <br>
+    <table border="1">
+        <th colspan="2">sort by price</th>
+        <tr>
+            <th>Sr.No</th>
+            <th>Price range</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td><a href="/sort/1">High to Low</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td><a href="/sort/0">Low to High</a></td>
+        </tr>
+
+    </table>
+    <br>
+    <form method="POST" action="/multifilter">
+       {% csrf_token %}
+       <h2>Filter by Cat1</h2>
+       <p><input type="radio" name="category" value="1" id="">Python,Django,MySQL,HTML,CSS,Javascripts</p>
+       <p><input type="radio" name="category" value="2" id="">Java,React,Angular,MySQL,HTML,CSS,Javascripts</p>
+       <p><input type="radio" name="category" value="3" id="">C,C++,Java,Python</p>
+       <p><input type="radio" name="category" value="4" id="">Salesforce</p>
+       <p><input type="radio" name="category" value="5" id="">Oracle fusion</p>
+       <p><input type="radio" name="category" value="6" id="">None</p>
+
+       <h2>Filter by Status</h2>
+       <p><input type="radio" name="status" value="1" id="">Available</p>
+       <p><input type="radio" name="status" value="0" id="">Unavailable</p>
+
+       <input type="submit" value="Apply">
+    </form>
+    
+</body>
+</html>

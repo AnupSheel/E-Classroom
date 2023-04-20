@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to E-Class</title>
+</head>
+<body>
+    <h1>Editt Courses Section</h1>
+    <hr>
+    {% for x in data %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Batch Name:</th>
+                         <td><input type="text" name="bname" value="{{x.name}}"></td>
+            </tr>
+            <tr>
+                <th>Course Category:</th>
+                         <td>
+                            {% if x.cat1 == '1' %}
+                            <input type="radio" name="cat" value="1" checked>Python,Django,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="2">Java,React,Angular,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="3">C,C++,Java,Python
+                            <input type="radio" name="cat" value="4">Salesforce
+                            <input type="radio" name="cat" value="5">Oracle fusion
+                            <input type="radio" name="cat" value="6">None
+                            {% elif x.cat1 == '2' %}
+                            <input type="radio" name="cat" value="1">Python,Django,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="2" checked>Java,React,Angular,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="3">C,C++,Java,Python
+                            <input type="radio" name="cat" value="4">Salesforce
+                            <input type="radio" name="cat" value="5">Oracle fusion
+                            <input type="radio" name="cat" value="6">None
+                            {% elif x.cat1 == '3' %}
+                            <input type="radio" name="cat" value="1">Python,Django,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="2">Java,React,Angular,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="3" checked>C,C++,Java,Python
+                            <input type="radio" name="cat" value="4">Salesforce
+                            <input type="radio" name="cat" value="5">Oracle fusion
+                            <input type="radio" name="cat" value="6">None
+                            {% elif x.cat1 == '4' %}
+                            <input type="radio" name="cat" value="1">Python,Django,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="2">Java,React,Angular,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="3">C,C++,Java,Python
+                            <input type="radio" name="cat" value="4" checked>Salesforce
+                            <input type="radio" name="cat" value="5">Oracle fusion
+                            <input type="radio" name="cat" value="6">None
+                            {% elif x.cat1 == '5' %}
+                            <input type="radio" name="cat" value="1">Python,Django,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="2">Java,React,Angular,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="3">C,C++,Java,Python
+                            <input type="radio" name="cat" value="4">Salesforce
+                            <input type="radio" name="cat" value="5" checked>Oracle fusion
+                            <input type="radio" name="cat" value="6">None
+                            {% else %}
+                            <input type="radio" name="cat" value="1">Python,Django,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="2">Java,React,Angular,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="3">C,C++,Java,Python
+                            <input type="radio" name="cat" value="4">Salesforce
+                            <input type="radio" name="cat" value="5">Oracle fusion
+                            <input type="radio" name="cat" value="6" checked>None
+                            {% endif %}
+                            </td>
+            </tr>
+            <tr>
+                <th>Other Courses:</th>
+                <td>
+                    {% if x.cat2 == '1'%}
+                    <input type="radio" name="oc" value="1" checked>Microsoft office,Resume Building Session,Career Guidance Session,Profile Building Session,Interview Session,Linux Session,Github Session.
+                    <input type="radio" name="oc" value="2">None
+                    {% else %}
+                    <input type="radio" name="oc" value="1">Microsoft office,Resume Building Session,Career Guidance Session,Profile Building Session,Interview Session,Linux Session,Github Session.
+                    <input type="radio" name="oc" value="2" checked>None
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>Recruitment:</th>
+                <td>
+                    <select name="re">
+                        {% if x.job_type == '1' %}
+                        <option value="1">Non-IT Functional</option>
+                        {% else %}
+                        <option value="2">IT Technical</option>
+                        {% endif %}
+                        <option value="1">Non-IT Functional</option>
+                        <option value="2">IT Technical</option>
+                </td>
+            </tr>
+                <tr>
+                    <th>Price:</th>
+                    <td><input type="number" name="amount" value="{{x.price}}"></td>
+                </tr>
+                <tr>
+                    <th>Batch Timing</th>
+                    <td>
+                    <select name="bt">
+                        {% if x.time == '1' %}
+                        <option value="1">9 AM TO 11 AM</option>
+                        {% elif x.time == '2' %}
+                        <option value="2">3 PM TO 5 PM </option>
+                        {% else %}
+                        <option value="3">7 PM TO 9 PM</option>
+                        {% endif %}
+                        
+                        <option value="1">9 AM TO 11 AM</option>
+                        <option value="2">3 PM TO 5 PM </option>
+                        <option value="3">7 PM TO 9 PM</option>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Status:</th>
+                    <td>
+                        {% if x.status == '1' %}
+                       <input type="radio" name="stat" value="1" checked>Available
+                       <input type="radio" name="stat" value="0">Unavailable
+                       {% else %}
+                       <input type="radio" name="stat" value="1">Available
+                       <input type="radio" name="stat" value="0"checked>Unavailable
+                       {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="submit">save</button></td>
+                </tr>
+        </table>
+    </form>  
+    {% endfor %}
+</body>
+</html>

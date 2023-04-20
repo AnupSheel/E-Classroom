@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to E-Class</title>
+</head>
+<body>
+    <h1>E-Class Courses</h1>
+    <hr>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Batch Name:</th>
+                         <td><input type="text" name="bname"></td>
+            </tr>
+            <tr>
+                <th>Course Category:</th>
+                         <td>
+                            <input type="radio" name="cat" value="1">Python,Django,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="2">Java,React,Angular,MySQL,HTML,CSS,Javascripts
+                            <input type="radio" name="cat" value="3">C,C++,Java,Python
+                            <input type="radio" name="cat" value="4">Salesforce
+                            <input type="radio" name="cat" value="5">Oracle fusion
+                            <input type="radio" name="cat" value="6">None
+                            </td>
+            </tr>
+            <tr>
+                <th>Other Courses:</th>
+                <td>
+                    <input type="radio" name="oc" value="1">Microsoft office,Resume Building Session,Career Guidance Session,Profile Building Session,Interview Session,Linux Session,Github Session.
+                    <input type="radio" name="oc" value="2">None
+                </td>
+            </tr>
+            <tr>
+                <th>Recruitment:</th>
+                <td>
+                    <select name="re">
+                        <option value="1">Non-IT Functional</option>
+                        <option value="2">IT Technical</option>
+                </td>
+            </tr>
+                <tr>
+                    <th>Price:</th>
+                    <td><input type="number" name="amount"></td>
+                </tr>
+                <tr>
+                    <th>Batch Timing</th>
+                    <td>
+                    <select name="bt">
+                        <option value="1">9 AM TO 11 AM</option>
+                        <option value="2">3 PM TO 5 PM </option>
+                        <option value="3">7 PM TO 9 PM</option>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Status:</th>
+                    <td>
+                       <input type="radio" name="stat" value="1">Available
+                       <input type="radio" name="stat" value="0">Unavailable
+                    </td>
+                </tr>
+                <tr>
+                    <td><button type="submit">save</button></td>
+                </tr>
+        </table>
+    </form>  
+</body>
+</html>
